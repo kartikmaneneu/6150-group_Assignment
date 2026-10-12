@@ -59,20 +59,27 @@ function filteredProfiles() {
 // ----- Greeting (name comes from the login page) -----
 
 function setGreeting() {
-  let name = null;
-  try { name = sessionStorage.getItem("nestUser"); } catch (e) { /* storage unavailable */ }
+  const currentUser = window.NestAuth.readCurrentUser();
+  const name = currentUser ? currentUser.username : null;
   document.getElementById("userGreeting").textContent = name ? `Hi, ${name}` : "Hi there";
 }
 
-function goToLogin() {
-  window.location.href = "index.html";
+function goToLogin(signedOut = false) {
+  window.location.href = signedOut ? "index.html?signedOut=1" : "index.html";
 }
 
 document.getElementById("logoutLink").addEventListener("click", (event) => {
   event.preventDefault();
-  try { sessionStorage.removeItem("nestUser"); } catch (e) { /* storage unavailable */ }
-  goToLogin();
+  window.NestAuth.clearCurrentUser();
+  goToLogin(true);
 });
+
+if (!window.NestAuth.readCurrentUser()) {
+  // Redirect away from protected pages if no authenticated user is present.
+  if (window.location.pathname.endsWith("home.html")) {
+    goToLogin();
+  }
+}
 
 // ----- Match meter (hero) -----
 
