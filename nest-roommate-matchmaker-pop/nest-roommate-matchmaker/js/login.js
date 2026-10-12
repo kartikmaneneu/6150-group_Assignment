@@ -9,6 +9,7 @@ const emailInput = document.getElementById("email");
 const passwordInput = document.getElementById("password");
 const emailFeedback = document.getElementById("emailFeedback");
 const passwordFeedback = document.getElementById("passwordFeedback");
+const loginNotice = document.getElementById("loginNotice");
 const loginAlert = document.getElementById("loginAlert");
 const loginBtn = document.getElementById("loginBtn");
 const togglePassword = document.getElementById("togglePassword");
@@ -54,7 +55,10 @@ function updateRuleList(input, items) {
 
 function showAlert(alertEl, title, messages) {
   alertEl.innerHTML = `<strong>${title}</strong><ul class="mb-0 mt-1">${messages.map((message) => `<li>${message}</li>`).join("")}</ul>`;
-  alertEl.classList.remove("d-none");
+  alertEl.classList.remove("alert-success", "d-none");
+  alertEl.classList.add("alert-danger");
+  alertEl.setAttribute("role", "alert");
+  alertEl.setAttribute("aria-live", "assertive");
 }
 
 function hideAlert(alertEl) {
@@ -63,6 +67,14 @@ function hideAlert(alertEl) {
 
 function goToHome() {
   window.location.href = "home.html";
+}
+
+function showSuccess(alertEl, message) {
+  alertEl.textContent = message;
+  alertEl.classList.remove("alert-danger", "d-none");
+  alertEl.classList.add("alert-success");
+  alertEl.setAttribute("role", "status");
+  alertEl.setAttribute("aria-live", "polite");
 }
 
 function setAuthMode(mode) {
@@ -154,8 +166,8 @@ loginForm.addEventListener("submit", (event) => {
   }
 
   auth.saveCurrentUser(authResult.account, rememberMe.checked);
-
-  setTimeout(goToHome, 700);
+  showSuccess(loginNotice, `Signed in successfully. Welcome, ${authResult.account.username}! Redirecting...`);
+  setTimeout(goToHome, 1200);
 });
 
 registerUsername.addEventListener("blur", () => { touched.username = true; validateRegisterUsername(); });
@@ -224,7 +236,8 @@ registerForm.addEventListener("submit", (event) => {
   }
 
   auth.saveCurrentUser(result.account, true);
-  setTimeout(goToHome, 700);
+  showSuccess(registerAlert, `Account created successfully. Welcome, ${result.account.username}! Redirecting...`);
+  setTimeout(goToHome, 1200);
 });
 
 document.getElementById("switchToRegister").addEventListener("click", () => setAuthMode("register"));
@@ -261,3 +274,7 @@ if (auth.readCurrentUser()) {
 
 setAuthMode("login");
 
+if (new URLSearchParams(window.location.search).get("signedOut") === "1") {
+  showSuccess(loginNotice, "You have been signed out successfully.");
+  window.history.replaceState({}, document.title, window.location.pathname);
+}

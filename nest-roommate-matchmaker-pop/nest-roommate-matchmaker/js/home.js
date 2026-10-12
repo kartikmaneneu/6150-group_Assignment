@@ -64,14 +64,14 @@ function setGreeting() {
   document.getElementById("userGreeting").textContent = name ? `Hi, ${name}` : "Hi there";
 }
 
-function goToLogin() {
-  window.location.href = "index.html";
+function goToLogin(signedOut = false) {
+  window.location.href = signedOut ? "index.html?signedOut=1" : "index.html";
 }
 
 document.getElementById("logoutLink").addEventListener("click", (event) => {
   event.preventDefault();
   window.NestAuth.clearCurrentUser();
-  goToLogin();
+  goToLogin(true);
 });
 
 if (!window.NestAuth.readCurrentUser()) {
