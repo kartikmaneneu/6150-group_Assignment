@@ -6,7 +6,7 @@ Nest helps university students find a roommate they can actually live with. Inst
 
 The project has two pages:
 
-- **Login page (`index.html`)**: sign in with a university `.edu` email. Every field is validated on the client side with specific error messages, a live password checklist, a show/hide password toggle, an error summary alert, a loading spinner, and a "Forgot password" modal with its own validation.
+- **Login page (`index.html`)**: sign in with a university `.edu` email or create a local account with a username and password. Accounts are saved in `localStorage`, password and email rules are validated on the client side, the app keeps the user signed in across sessions when "Keep me signed in" is selected, and the page redirects logged-in users straight to the landing page.
 - **Landing page (`home.html`)**: a personalized home page with a live "match meter" (answer three questions and the house windows light up as your match score rises), filterable roommate profiles with habit badges and match bars, a profile modal, saved roommates in an offcanvas panel, a "How it works" section, a stories carousel and an FAQ accordion.
 
 All profiles are fictional sample data.
@@ -49,7 +49,7 @@ The pages are built from scratch on Bootstrap 5.3, not copied from a template. C
    cd nest-roommate-matchmaker
    ```
 2. Open `index.html` in a browser, or use the VS Code **Live Server** extension (right-click `index.html` > Open with Live Server).
-3. Sign in with any email ending in `.edu` and a password with at least 8 characters, one uppercase letter and one number (for example `nidhi@northeastern.edu` / `Roommate1`).
+3. Sign in with any email ending in `.edu` and a password with at least 8 characters, one uppercase letter and one number (for example `nidhi@northeastern.edu` / `Roommate12`), or choose **Create one** to register a username and local account. The first valid sign-in using an unregistered `.edu` email also creates the account automatically in `localStorage`.
 
 An internet connection is needed because Bootstrap and the fonts load from a CDN.
 
