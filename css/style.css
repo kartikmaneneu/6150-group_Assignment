@@ -1,0 +1,58 @@
+.stories {
+  background: #fff;
+  border: 1px solid #DFE3F0;
+  border-radius: 1.5rem;
+  padding: 3rem 4.5rem 3.5rem;
+}
+
+.story p {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.2rem, 2.4vw, 1.65rem);
+  line-height: 1.35;
+  max-width: 40ch;
+}
+
+.story footer {
+  color: var(--nest-muted);
+  font-weight: 600;
+  margin-top: 1rem;
+}
+
+.stories .carousel-indicators { margin-bottom: 1rem; }
+
+.stories .carousel-indicators [data-bs-target] {
+  background-color: var(--nest-ink);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.stories .carousel-control-prev,
+.stories .carousel-control-next { width: 3.5rem; }
+
+.stories .carousel-control-prev-icon,
+.stories .carousel-control-next-icon {
+  filter: invert(1) grayscale(1) brightness(0.3);
+}
+
+.faq-section .accordion-item { border-color: #DFE3F0; }
+
+.faq-section .accordion-button { font-weight: 600; }
+
+.faq-section .accordion-button:not(.collapsed) {
+  background: #E6E9FF;
+  color: var(--nest-ink);
+}
+.nest-footer {
+  border-top: 1px solid #DFE3F0;
+  color: var(--nest-muted);
+}
+
+.nest-toast {
+  background: var(--nest-ink);
+  color: #fff;
+  border: 0;
+}
+
+.nest-toast .btn-close { filter: invert(1); }
