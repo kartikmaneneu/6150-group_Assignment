@@ -128,3 +128,38 @@ button:focus-visible,
 }
 
 .nest-nav .nav-link:hover { color: var(--nest-violet); }
+
+.btn { background-image: none; font-weight: 600; }
+
+.btn-nest {
+  --bs-btn-bg: var(--nest-violet);
+  --bs-btn-border-color: var(--nest-violet);
+  --bs-btn-color: #fff;
+  --bs-btn-hover-bg: #4655e6;
+  --bs-btn-hover-border-color: #4655e6;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-active-bg: #3a48c9;
+  --bs-btn-active-border-color: #3a48c9;
+  --bs-btn-active-color: #fff;
+  --bs-btn-disabled-bg: var(--nest-violet);
+  --bs-btn-disabled-border-color: var(--nest-violet);
+  --bs-btn-disabled-color: #fff;
+}
+
+.btn-outline-nest {
+  --bs-btn-color: var(--nest-ink);
+  --bs-btn-border-color: #C9CFE3;
+  --bs-btn-bg: #fff;
+  --bs-btn-hover-bg: #E6E9FF;
+  --bs-btn-hover-color: var(--nest-ink);
+  --bs-btn-hover-border-color: var(--nest-violet);
+  --bs-btn-active-bg: var(--nest-ink);
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-border-color: var(--nest-ink);
+}
+
+.btn-check:checked + .btn-outline-nest {
+  background-color: var(--nest-ink);
+  border-color: var(--nest-ink);
+  color: #fff;
+}
