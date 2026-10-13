@@ -17,7 +17,31 @@
 
   <main>
     <!-- ===== Hero with match meter (added by teammate) ===== -->
-    <!-- ===== Matches (added by teammate) ===== -->
+    <!-- ===== Matches: pills + cards + badges + tooltips + progress + pagination ===== -->
+    <section class="py-5" id="matches">
+      <div class="container">
+        <div class="d-flex flex-wrap justify-content-between align-items-end gap-3 mb-4">
+          <div>
+            <h2 class="section-title mb-1">Your matches near campus</h2>
+            <p class="text-body-secondary mb-0">Sorted by how well your habits line up.</p>
+          </div>
+          <ul class="nav nav-pills nest-pills" id="filterPills" role="tablist" aria-label="Filter matches">
+            <li class="nav-item"><button class="nav-link active" data-filter="all" type="button">Everyone</button></li>
+            <li class="nav-item"><button class="nav-link" data-filter="night" type="button">Night owls</button></li>
+            <li class="nav-item"><button class="nav-link" data-filter="early" type="button">Early birds</button></li>
+            <li class="nav-item"><button class="nav-link" data-filter="quiet" type="button">Quiet</button></li>
+            <li class="nav-item"><button class="nav-link" data-filter="social" type="button">Social</button></li>
+          </ul>
+        </div>
+
+        <div class="row g-4" id="profileGrid"></div>
+
+        <nav class="mt-4" aria-label="Match pages">
+          <ul class="pagination justify-content-center nest-pagination" id="profilePagination"></ul>
+        </nav>
+      </div>
+    </section>
+
     <!-- ===== How it works (added by teammate) ===== -->
 
     <section class="py-5" id="stories">
@@ -106,9 +130,65 @@
     </section>
   </main>
 
-  <!-- ===== Footer, profile modal, saved offcanvas, toast (added by teammate) ===== -->
+  <!-- ===== Footer (added by teammate) ===== -->
+
+  <!-- ===== Profile modal ===== -->
+  <div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="d-flex align-items-center gap-3">
+            <span class="avatar" id="modalAvatar" aria-hidden="true"></span>
+            <div>
+              <h2 class="modal-title h5 mb-0" id="profileModalTitle"></h2>
+              <p class="small text-body-secondary mb-0" id="modalMeta"></p>
+            </div>
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <figure class="figure w-100 mb-3">
+            <img src="" class="figure-img img-fluid rounded room-photo" id="modalRoomImg" alt="">
+            <figcaption class="figure-caption" id="modalRoomCaption"></figcaption>
+          </figure>
+          <p id="modalBio"></p>
+          <ul class="list-group mb-3" id="modalFacts"></ul>
+          <label for="modalMatch" class="form-label small mb-1">Match</label>
+          <div class="progress match-progress" role="progressbar" id="modalMatch" aria-valuemin="0" aria-valuemax="100">
+            <div class="progress-bar" id="modalMatchBar"></div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-nest" id="sayHelloBtn">Say hello</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Saved roommates offcanvas ===== -->
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="savedOffcanvas" aria-labelledby="savedTitle">
+    <div class="offcanvas-header">
+      <h2 class="offcanvas-title h5" id="savedTitle">Saved roommates</h2>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <p id="savedEmpty" class="text-body-secondary">Nobody saved yet. Tap "Save" on a profile to keep it here.</p>
+      <ul class="list-group" id="savedList"></ul>
+    </div>
+  </div>
+
+  <!-- ===== Toast ===== -->
+  <div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="nestToast" class="toast nest-toast" role="status" aria-live="polite" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body" id="nestToastBody"></div>
+        <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+    </div>
+  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- js/home.js is added by the teammate who builds the matches section -->
+  <script src="js/home.js"></script>
 </body>
 </html>
