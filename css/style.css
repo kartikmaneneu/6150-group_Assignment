@@ -1,3 +1,41 @@
+:root {
+  --nest-ink: #1E2A44;       
+  --nest-wall: #F2F4FA;      
+  --nest-lamp: #FFC94A;     
+  --nest-violet: #5B6CFF;    
+  --nest-rose: #F36F8F;      
+  --nest-muted: #5D6880;
+
+  --font-display: "Bricolage Grotesque", "Trebuchet MS", sans-serif;
+  --font-body: "Figtree", "Segoe UI", system-ui, -apple-system, sans-serif;
+
+  --bs-body-font-family: var(--font-body);
+  --bs-body-color: var(--nest-ink);
+  --bs-body-bg: var(--nest-wall);
+  --bs-link-color-rgb: 91, 108, 255;
+  --bs-border-radius: 0.75rem;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--nest-ink);
+  background-color: var(--nest-wall);
+}
+
+h1, h2, h3, h4, h5, .h1, .h2, .h3, .h4, .h5 {
+  font-family: var(--font-display);
+  color: var(--nest-ink);
+  letter-spacing: -0.01em;
+}
+
+a:focus-visible,
+button:focus-visible,
+.btn:focus-visible,
+.badge:focus-visible {
+  outline: 3px solid var(--nest-violet);
+  outline-offset: 2px;
+}
+
 .stories {
   background: #fff;
   border: 1px solid #DFE3F0;
