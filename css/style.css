@@ -94,3 +94,37 @@ button:focus-visible,
 }
 
 .nest-toast .btn-close { filter: invert(1); }
+
+.brand-mark {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.6rem;
+  color: var(--nest-ink);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.brand-roof {
+  width: 26px;
+  height: 22px;
+  background: var(--nest-violet);
+  clip-path: polygon(50% 0, 100% 55%, 82% 55%, 82% 100%, 18% 100%, 18% 55%, 0 55%);
+  display: inline-block;
+}
+
+.small-mark { font-size: 1.1rem; }
+
+/* ===== Navbar ===== */
+.nest-nav {
+  background: rgba(242, 244, 250, 0.94);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid #DFE3F0;
+}
+
+.nest-nav .nav-link {
+  color: var(--nest-ink);
+  font-weight: 500;
+}
+
+.nest-nav .nav-link:hover { color: var(--nest-violet); }
