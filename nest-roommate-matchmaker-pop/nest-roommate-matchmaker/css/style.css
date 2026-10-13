@@ -339,6 +339,13 @@ button:focus-visible,
 
 #modalMatch { height: 18px; }
 
+/* Room photo figure in the profile modal (photos have mixed sizes, so crop to one height) */
+.room-photo {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
 /* ===== Pagination ===== */
 .nest-pagination .page-link {
   color: var(--nest-ink);
