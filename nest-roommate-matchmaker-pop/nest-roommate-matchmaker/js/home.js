@@ -254,6 +254,10 @@ document.getElementById("profileModal").addEventListener("show.bs.modal", (event
   avatar.style.background = p.color;
   document.getElementById("profileModalTitle").textContent = p.name;
   document.getElementById("modalMeta").textContent = `${p.major}, ${p.year}`;
+  const roomImg = document.getElementById("modalRoomImg");
+  roomImg.src = p.room;
+  roomImg.alt = `${p.name}'s room`;
+  document.getElementById("modalRoomCaption").textContent = p.roomCaption;
   document.getElementById("modalBio").textContent = p.bio;
   document.getElementById("modalFacts").innerHTML =
     p.habits.map(([icon, label, tip]) => `<li class="list-group-item"><span aria-hidden="true">${icon}</span> <strong>${label}</strong>: ${tip}</li>`).join("") +
