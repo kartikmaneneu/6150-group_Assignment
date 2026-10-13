@@ -17,7 +17,31 @@
 
   <main>
     <!-- ===== Hero with match meter (added by teammate) ===== -->
-    <!-- ===== Matches (added by teammate) ===== -->
+    <!-- ===== Matches: pills + cards + badges + tooltips + progress + pagination ===== -->
+    <section class="py-5" id="matches">
+      <div class="container">
+        <div class="d-flex flex-wrap justify-content-between align-items-end gap-3 mb-4">
+          <div>
+            <h2 class="section-title mb-1">Your matches near campus</h2>
+            <p class="text-body-secondary mb-0">Sorted by how well your habits line up.</p>
+          </div>
+          <ul class="nav nav-pills nest-pills" id="filterPills" role="tablist" aria-label="Filter matches">
+            <li class="nav-item"><button class="nav-link active" data-filter="all" type="button">Everyone</button></li>
+            <li class="nav-item"><button class="nav-link" data-filter="night" type="button">Night owls</button></li>
+            <li class="nav-item"><button class="nav-link" data-filter="early" type="button">Early birds</button></li>
+            <li class="nav-item"><button class="nav-link" data-filter="quiet" type="button">Quiet</button></li>
+            <li class="nav-item"><button class="nav-link" data-filter="social" type="button">Social</button></li>
+          </ul>
+        </div>
+
+        <div class="row g-4" id="profileGrid"></div>
+
+        <nav class="mt-4" aria-label="Match pages">
+          <ul class="pagination justify-content-center nest-pagination" id="profilePagination"></ul>
+        </nav>
+      </div>
+    </section>
+
     <!-- ===== How it works (added by teammate) ===== -->
 
     <section class="py-5" id="stories">
