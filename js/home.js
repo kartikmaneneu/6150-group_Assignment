@@ -249,3 +249,32 @@ document.getElementById("logoutLink").addEventListener("click", (event) => {
 });
 
 setGreeting();
+
+
+const MAYA = { bedtime: "night", tidy: "neat", guests: "rare" };
+
+function updateMeter() {
+  let score = 10;
+  ["bedtime", "tidy", "guests"].forEach((question) => {
+    const picked = document.querySelector(`input[name="${question}"]:checked`);
+    if (picked && picked.value === MAYA[question]) score += 30;
+  });
+
+  // Light up windows in proportion to the score (6 windows)
+  const windows = document.querySelectorAll("#houseWindows .window");
+  const litCount = Math.round((score / 100) * windows.length);
+  windows.forEach((w, i) => w.classList.toggle("lit", i < litCount));
+
+  document.getElementById("matchScore").textContent = score;
+
+  let text = "match with Maya";
+  if (score === 100) text = "match. Maya would love living with you.";
+  else if (score >= 70) text = "match. One small thing to talk about.";
+  document.getElementById("matchText").textContent = text;
+}
+
+document.querySelectorAll(".meter-card .btn-check").forEach((input) => {
+  input.addEventListener("change", updateMeter);
+});
+
+updateMeter();
