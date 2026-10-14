@@ -67,11 +67,11 @@ nest-roommate-matchmaker/
 
 ## Team and contributions
 
-| Member | Branch | Contribution |
-|--------|--------|--------------|
-| Name 1 | `name1` | Login page and validation |
-| Name 2 | `name2` | Navbar, hero and match meter |
-| Name 3 | `name3` | Profile cards, filters, modal, saved offcanvas |
-| Name 4 | `name4` | Stories, FAQ, footer, responsive testing, README |
+| Member    |       Branch                | Contribution |
+|-----------|-----------------------------|--------------|
+| Karthik   | `feature-kartik`            | Login, registration and authentication |
+| Neelaveni | `feature-neelaveni-landing` | Navbar, hero, match meter (quiz, live score and house visual) |
+| Yikai Zhu | `feature-Yikai`             | Roommate profile cards, filters, pagination, profile modal, saved roommates panel |
+| Nidhi     | `feature/Nidhi`             | Stories carousel, FAQ, footer, README, integration and testing |
 
 All work was merged into `main` through pull requests from each member's branch.
