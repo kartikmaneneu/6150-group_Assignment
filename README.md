@@ -36,6 +36,7 @@ All profiles are fictional sample data.
 | 19 | Carousel | Roommate stories |
 | 20 | Accordion | FAQ |
 | 21 | Grid system and utilities | Responsive layout on both pages |
+| 22 | Figure | Room photo and caption in the profile modal |
 
 ## Customization
 
@@ -45,8 +46,8 @@ The pages are built from scratch on Bootstrap 5.3, not copied from a template. C
 
 1. Clone the repository:
    ```
-   git clone <your-repo-url>
-   cd nest-roommate-matchmaker
+   git clone https://github.com/kartikmaneneu/6150-group_Assignment.git
+   cd 6150-group_Assignment
    ```
 2. Open `index.html` in a browser, or use the VS Code **Live Server** extension (right-click `index.html` > Open with Live Server).
 3. Sign in with any email ending in `.edu` and a password with at least 8 characters, one uppercase letter and one number (for example `nidhi@northeastern.edu` / `Roommate1`).
@@ -56,22 +57,23 @@ An internet connection is needed because Bootstrap and the fonts load from a CDN
 ## Folder structure
 
 ```
-nest-roommate-matchmaker/
+6150-group_Assignment/
   index.html      Login page
   home.html       Landing page
   css/style.css   Custom styles for both pages
-  js/login.js     Login validation
+  js/login.js     Login validation and accounts
   js/home.js      Landing page interactions
+  images/         Room photos shown in the profile modal
   README.md
 ```
 
 ## Team and contributions
 
-| Member | Branch | Contribution |
-|--------|--------|--------------|
-| Name 1 | `name1` | Login page and validation |
-| Name 2 | `name2` | Navbar, hero and match meter |
-| Name 3 | `name3` | Profile cards, filters, modal, saved offcanvas |
-| Name 4 | `name4` | Stories, FAQ, footer, responsive testing, README |
+| Member    |       Branch                | Contribution |
+|-----------|-----------------------------|--------------|
+| Karthik   | `feature-kartik`            | Login, registration and authentication |
+| Neelaveni | `feature-neelaveni-landing` | Navbar, hero, match meter (quiz, live score and house visual) |
+| Yikai Zhu | `feature-Yikai`             | Roommate profile cards, filters, pagination, profile modal, saved roommates panel |
+| Nidhi     | `feature/Nidhi`             | Stories carousel, FAQ, footer, README, integration and testing |
 
 All work was merged into `main` through pull requests from each member's branch.

@@ -13,10 +13,113 @@
 </head>
 <body class="home-page">
 
-  <!-- ===== Navbar (added by teammate) ===== -->
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg nest-nav sticky-top" aria-label="Main">
+    <div class="container">
+      <a class="navbar-brand brand-mark" href="home.html"><span class="brand-roof" aria-hidden="true"></span> Nest</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Open menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="#matches">Matches</a></li>
+          <li class="nav-item"><a class="nav-link" href="#how">How it works</a></li>
+          <li class="nav-item"><a class="nav-link" href="#stories">Stories</a></li>
+          <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
+        </ul>
+        
+        <div class="d-flex align-items-center gap-2">
+          <button class="btn btn-outline-nest position-relative" type="button" data-bs-toggle="offcanvas" data-bs-target="#savedOffcanvas" aria-controls="savedOffcanvas">
+            Saved
+            <span id="savedCount" class="badge rounded-pill text-bg-warning ms-1">0</span>
+          </button>
+
+          <div class="dropdown">
+            <button class="btn btn-nest dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <span id="userGreeting">Hi there</span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li><a class="dropdown-item" href="#quiz">Edit my habits</a></li>
+              <li><a class="dropdown-item" href="#matches">My matches</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="index.html" id="logoutLink">Sign out</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
 
   <main>
-    <!-- ===== Hero with match meter (added by teammate) ===== -->
+    <section class="hero py-5" id="quiz">
+      <div class="container py-lg-4">
+        <div class="row align-items-center gx-lg-5 gy-4">
+        <div class="col-lg-6">
+            <h1 class="hero-title">Find a roommate who won't leave dishes in the sink.</h1>
+            <p class="hero-lede">Nest matches students by the things that actually decide whether living together works: when you sleep, how tidy you keep things, and how often friends come over.</p>
+            <div class="d-flex flex-wrap gap-2 mt-4">
+              <a href="#matches" class="btn btn-nest btn-lg">See my matches</a>
+              <a href="#how" class="btn btn-outline-nest btn-lg">How matching works</a>
+            </div>
+          </div>
+          
+          <div class="col-lg-6">
+            <div class="meter-card">
+              <div class="row g-4 align-items-center">
+                                <div class="col-sm-5 text-center">
+                  <div class="house" aria-hidden="true">
+                    <div class="house-roof"></div>
+                    <div class="house-body" id="houseWindows">
+                      <span class="window"></span><span class="window"></span><span class="window"></span>
+                      <span class="window"></span><span class="window"></span><span class="window"></span>
+                    </div>
+                    <div class="house-door"></div>
+                  </div>
+                  <p class="match-score mt-3 mb-0" aria-live="polite"><span id="matchScore">10</span>%</p>
+                  <p class="small text-body-secondary mb-0" id="matchText">match with Maya</p>
+                </div>
+                <div class="col-sm-7">
+                  <h2 class="h5 mb-1">Try it with Maya</h2>
+                  <p class="small text-body-secondary mb-3">Maya is a night owl, keeps things spotless and rarely has guests. Answer for yourself.</p>
+
+                  <fieldset class="mb-3">
+                    <legend class="meter-q">When do you go to bed?</legend>
+                    <div class="btn-group w-100" role="group">
+                      <input type="radio" class="btn-check" name="bedtime" id="bedEarly" value="early" autocomplete="off">
+                      <label class="btn btn-outline-nest" for="bedEarly">Before 11</label>
+                      <input type="radio" class="btn-check" name="bedtime" id="bedNight" value="night" autocomplete="off">
+                      <label class="btn btn-outline-nest" for="bedNight">After 1 AM</label>
+                    </div>
+                  </fieldset>
+
+                  <fieldset class="mb-3">
+                    <legend class="meter-q">How tidy is your space?</legend>
+                    <div class="btn-group w-100" role="group">
+                      <input type="radio" class="btn-check" name="tidy" id="tidyNeat" value="neat" autocomplete="off">
+                      <label class="btn btn-outline-nest" for="tidyNeat">Spotless</label>
+                      <input type="radio" class="btn-check" name="tidy" id="tidyLived" value="lived" autocomplete="off">
+                      <label class="btn btn-outline-nest" for="tidyLived">Lived-in</label>
+                    </div>
+                  </fieldset>
+
+                  <fieldset>
+                    <legend class="meter-q">How often do friends come over?</legend>
+                    <div class="btn-group w-100" role="group">
+                      <input type="radio" class="btn-check" name="guests" id="guestRare" value="rare" autocomplete="off">
+                      <label class="btn btn-outline-nest" for="guestRare">Rarely</label>
+                      <input type="radio" class="btn-check" name="guests" id="guestOften" value="often" autocomplete="off">
+                      <label class="btn btn-outline-nest" for="guestOften">Most weekends</label>
+                    </div>
+                  </fieldset>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  
     <!-- ===== Matches: pills + cards + badges + tooltips + progress + pagination ===== -->
     <section class="py-5" id="matches">
       <div class="container">
@@ -42,7 +145,6 @@
       </div>
     </section>
 
-    <!-- ===== How it works (added by teammate) ===== -->
 
     <section class="py-5" id="stories">
       <div class="container">
@@ -130,7 +232,6 @@
     </section>
   </main>
 
-  <!-- ===== Footer (added by teammate) ===== -->
 
   <!-- ===== Profile modal ===== -->
   <div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalTitle" aria-hidden="true">

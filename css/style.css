@@ -1,3 +1,41 @@
+:root {
+  --nest-ink: #1E2A44;       
+  --nest-wall: #F2F4FA;      
+  --nest-lamp: #FFC94A;     
+  --nest-violet: #5B6CFF;    
+  --nest-rose: #F36F8F;      
+  --nest-muted: #5D6880;
+
+  --font-display: "Bricolage Grotesque", "Trebuchet MS", sans-serif;
+  --font-body: "Figtree", "Segoe UI", system-ui, -apple-system, sans-serif;
+
+  --bs-body-font-family: var(--font-body);
+  --bs-body-color: var(--nest-ink);
+  --bs-body-bg: var(--nest-wall);
+  --bs-link-color-rgb: 91, 108, 255;
+  --bs-border-radius: 0.75rem;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--nest-ink);
+  background-color: var(--nest-wall);
+}
+
+h1, h2, h3, h4, h5, .h1, .h2, .h3, .h4, .h5 {
+  font-family: var(--font-display);
+  color: var(--nest-ink);
+  letter-spacing: -0.01em;
+}
+
+a:focus-visible,
+button:focus-visible,
+.btn:focus-visible,
+.badge:focus-visible {
+  outline: 3px solid var(--nest-violet);
+  outline-offset: 2px;
+}
+
 .stories {
   background: #fff;
   border: 1px solid #DFE3F0;
@@ -57,6 +95,74 @@
 
 .nest-toast .btn-close { filter: invert(1); }
 
+.brand-mark {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.6rem;
+  color: var(--nest-ink);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.brand-roof {
+  width: 26px;
+  height: 22px;
+  background: var(--nest-violet);
+  clip-path: polygon(50% 0, 100% 55%, 82% 55%, 82% 100%, 18% 100%, 18% 55%, 0 55%);
+  display: inline-block;
+}
+
+.small-mark { font-size: 1.1rem; }
+
+/* ===== Navbar ===== */
+.nest-nav {
+  background: rgba(242, 244, 250, 0.94);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid #DFE3F0;
+}
+
+.nest-nav .nav-link {
+  color: var(--nest-ink);
+  font-weight: 500;
+}
+
+.nest-nav .nav-link:hover { color: var(--nest-violet); }
+
+.btn { background-image: none; font-weight: 600; }
+
+.btn-nest {
+  --bs-btn-bg: var(--nest-violet);
+  --bs-btn-border-color: var(--nest-violet);
+  --bs-btn-color: #fff;
+  --bs-btn-hover-bg: #4655e6;
+  --bs-btn-hover-border-color: #4655e6;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-active-bg: #3a48c9;
+  --bs-btn-active-border-color: #3a48c9;
+  --bs-btn-active-color: #fff;
+  --bs-btn-disabled-bg: var(--nest-violet);
+  --bs-btn-disabled-border-color: var(--nest-violet);
+  --bs-btn-disabled-color: #fff;
+}
+
+.btn-outline-nest {
+  --bs-btn-color: var(--nest-ink);
+  --bs-btn-border-color: #C9CFE3;
+  --bs-btn-bg: #fff;
+  --bs-btn-hover-bg: #E6E9FF;
+  --bs-btn-hover-color: var(--nest-ink);
+  --bs-btn-hover-border-color: var(--nest-violet);
+  --bs-btn-active-bg: var(--nest-ink);
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-border-color: var(--nest-ink);
+}
+
+.btn-check:checked + .btn-outline-nest {
+  background-color: var(--nest-ink);
+  border-color: var(--nest-ink);
+  color: #fff;
+}
 /* ===== Filter pills ===== */
 .nest-pills {
   gap: 0.35rem;
@@ -124,7 +230,6 @@
 
 #modalMatch { height: 18px; }
 
-/* Room photo figure in the profile modal (photos have mixed sizes, so crop to one height) */
 .room-photo {
   width: 100%;
   height: 220px;
@@ -143,8 +248,6 @@
   color: #fff;
 }
 
-/* ===== Pop style for matches, profile modal and saved list ===== */
-/* Fallback colors keep these working before the shared pop tokens are added */
 .profile-card {
   border: 3px solid var(--pop-ink, #111);
   box-shadow: 8px 8px 0 var(--pop-ink, #111);
@@ -160,3 +263,160 @@
 .match-progress .progress-bar { background: var(--pop-mint, #3BCEAC); border-radius: 0; }
 .nest-pills .nav-link { border: 2px solid var(--pop-ink, #111); }
 .nest-pills .nav-link.active { background: var(--pop-purple, #7B5CFF); }
+
+/* ===== Hero ===== */
+.hero-title {
+  font-weight: 800;
+  font-size: clamp(2.4rem, 5.2vw, 4rem);
+  line-height: 1.02;
+  max-width: 14ch;
+}
+
+.hero-lede {
+  font-size: 1.15rem;
+  color: var(--nest-muted);
+  max-width: 46ch;
+  margin-top: 1.25rem;
+}
+
+.section-title {
+  font-weight: 700;
+  font-size: clamp(1.75rem, 3vw, 2.4rem);
+}
+
+.meter-card {
+  background: #fff;
+  border: 1px solid #DFE3F0;
+  border-radius: 1.5rem;
+  padding: 1.75rem;
+}
+
+.meter-q {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+/* ===== The house (signature element) ===== */
+.house {
+  width: 170px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.house-roof {
+  height: 70px;
+  background: var(--nest-violet);
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+  margin: 0 -14px;
+}
+
+.house-body {
+  background: #2C3B5E;
+  padding: 16px 16px 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.window {
+  aspect-ratio: 1;
+  background: #3D4E75;
+  border-radius: 4px;
+  transition: background-color 0.45s ease, box-shadow 0.45s ease;
+}
+
+.window.lit {
+  background: var(--nest-lamp);
+  box-shadow: 0 0 16px rgba(255, 201, 74, 0.75);
+}
+
+.house-door {
+  width: 40px;
+  height: 52px;
+  margin: 0 auto;
+  background: var(--nest-rose);
+  border-radius: 20px 20px 0 0;
+  position: relative;
+  top: 0;
+}
+
+/* Ground line under the house */
+.house::after {
+  content: "";
+  display: block;
+  height: 8px;
+  background: #2C3B5E;
+  border-radius: 0 0 6px 6px;
+}
+
+.match-score {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 2.5rem;
+  line-height: 1;
+}
+
+/* ===== Landing page: mobile layout and accessibility (Neelaveni) ===== */
+
+html { scroll-padding-top: 5rem; }
+
+@media (max-width: 991.98px) {
+  .hero-title { max-width: none; }
+  .hero-lede { max-width: none; }
+}
+
+@media (max-width: 575.98px) {
+  .meter-card { padding: 1.25rem; }
+  .hero .btn-lg { width: 100%; }
+  .house { width: 140px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .window { transition: none; }
+}
+
+:root {
+  --pop-ink: #111;
+  --pop-sky: #D6F1FF;
+  --pop-yellow: #FFD23F;
+  --pop-pink: #FF5DA2;
+  --pop-mint: #3BCEAC;
+  --pop-purple: #7B5CFF;
+}
+body, .home-page { background: var(--pop-sky); }
+h1, h2, h3, .h3, .h5 { color: var(--pop-ink); font-weight: 800; }
+
+.btn {
+  border: 3px solid var(--pop-ink) !important;
+  box-shadow: 4px 4px 0 var(--pop-ink);
+  border-radius: 12px;
+  transition: transform .12s, box-shadow .12s;
+}
+.btn:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--pop-ink); }
+.btn:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--pop-ink); }
+.btn-nest { --bs-btn-bg: var(--pop-pink); --bs-btn-hover-bg: var(--pop-pink); --bs-btn-active-bg: var(--pop-pink); --bs-btn-color: var(--pop-ink); --bs-btn-hover-color: var(--pop-ink); --bs-btn-active-color: var(--pop-ink); --bs-btn-disabled-bg: var(--pop-pink); --bs-btn-disabled-color: var(--pop-ink); }
+.btn-outline-nest { --bs-btn-bg: #fff; }
+.btn-check:checked + .btn-outline-nest { background: var(--pop-yellow); color: var(--pop-ink); }
+.btn-group > .btn { box-shadow: none; }
+.btn-group { box-shadow: 4px 4px 0 var(--pop-ink); border-radius: 12px; }
+
+/* ===== POP STYLE: navbar, hero, match meter, house (Neelaveni) ===== */
+.nest-nav { background: var(--pop-yellow); border-bottom: 3px solid var(--pop-ink); }
+.brand-roof { background: var(--pop-pink); }
+
+.hero-title { font-size: clamp(2.6rem, 5.6vw, 4.4rem); }
+
+.meter-card {
+  background: #fff;
+  border: 3px solid var(--pop-ink);
+  box-shadow: 8px 8px 0 var(--pop-ink);
+  border-radius: 18px;
+  transform: rotate(1.5deg);
+}
+
+.house-roof { background: var(--pop-pink); }
+.house-body, .house::after { background: var(--pop-purple); }
+.window { background: #5a3fd6; border: 2px solid var(--pop-ink); }
+.window.lit { background: var(--pop-yellow); }
+.house-door { background: var(--pop-mint); border: 3px solid var(--pop-ink); border-bottom: 0; }
+
