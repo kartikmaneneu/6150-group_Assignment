@@ -299,3 +299,62 @@ button:focus-visible,
   font-weight: 600;
   margin-bottom: 0.4rem;
 }
+/* ===== The house (signature element) ===== */
+.house {
+  width: 170px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.house-roof {
+  height: 70px;
+  background: var(--nest-violet);
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+  margin: 0 -14px;
+}
+
+.house-body {
+  background: #2C3B5E;
+  padding: 16px 16px 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.window {
+  aspect-ratio: 1;
+  background: #3D4E75;
+  border-radius: 4px;
+  transition: background-color 0.45s ease, box-shadow 0.45s ease;
+}
+
+.window.lit {
+  background: var(--nest-lamp);
+  box-shadow: 0 0 16px rgba(255, 201, 74, 0.75);
+}
+
+.house-door {
+  width: 40px;
+  height: 52px;
+  margin: 0 auto;
+  background: var(--nest-rose);
+  border-radius: 20px 20px 0 0;
+  position: relative;
+  top: 0;
+}
+
+/* Ground line under the house */
+.house::after {
+  content: "";
+  display: block;
+  height: 8px;
+  background: #2C3B5E;
+  border-radius: 0 0 6px 6px;
+}
+
+.match-score {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 2.5rem;
+  line-height: 1;
+}
