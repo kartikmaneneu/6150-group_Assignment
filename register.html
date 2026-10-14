@@ -46,8 +46,10 @@
           <h2 class="h3 mb-1">Create your account</h2>
           <p class="text-body-secondary mb-4">Sign up with your university email to get started.</p>
 
+          <!-- Shows invalid input, duplicate accounts, and storage errors. -->
           <div id="registerAlert" class="alert alert-danger d-none" role="alert" aria-live="assertive"></div>
 
+          <!-- New account details are validated and saved by js/register.js. -->
           <form id="registerForm" novalidate>
             <div class="form-floating mb-3">
               <input type="email" class="form-control" id="registerEmail" placeholder="name@university.edu" autocomplete="email" aria-describedby="registerEmailFeedback">
@@ -61,6 +63,7 @@
               <div id="registerPasswordFeedback" class="invalid-feedback"></div>
             </div>
 
+            <!-- Live checklist uses the same requirements as login. -->
             <ul id="registerPasswordRules" class="list-group list-group-flush rule-list mb-3" aria-label="Password requirements">
               <li class="list-group-item" data-rule="length">At least 8 characters</li>
               <li class="list-group-item" data-rule="upper">One uppercase letter</li>

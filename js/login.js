@@ -10,6 +10,7 @@ const loginButton = document.getElementById("loginBtn");
 const loginSpinner = loginButton.querySelector(".spinner-border");
 const loginLabel = loginButton.querySelector(".btn-label");
 
+// Keep the same password rules on login and registration so both flows agree.
 function isUniversityEmail(email) {
   return /^[^\s@]+@[^\s@]+\.edu$/i.test(email);
 }
@@ -84,6 +85,7 @@ function readAccounts() {
   const stored = localStorage.getItem(ACCOUNT_STORAGE_KEY);
   if (stored === null) return {};
 
+  // Validate the stored shape before using it to authenticate a user.
   const accounts = JSON.parse(stored);
   if (!accounts || typeof accounts !== "object" || Array.isArray(accounts)) {
     throw new Error("Stored account data is invalid.");
@@ -119,6 +121,7 @@ async function hashPassword(password, salt) {
 async function authenticate(email, password) {
   const accounts = readAccounts();
   const account = accounts[email];
+  // Distinguish an unknown email from an incorrect password for clear feedback.
   if (!account) return undefined;
   if (typeof account.salt !== "string" || !/^[\da-f]{32}$/i.test(account.salt) ||
       typeof account.passwordHash !== "string" || !/^[\da-f]{64}$/i.test(account.passwordHash)) {
@@ -135,6 +138,7 @@ async function authenticate(email, password) {
 function setSignedInUser(name) {
   localStorage.removeItem(USER_STORAGE_KEY);
   sessionStorage.removeItem(USER_STORAGE_KEY);
+  // Remember-me persists across browser sessions; otherwise sign-in ends with this tab session.
   if (document.getElementById("rememberMe").checked) {
     localStorage.setItem(USER_STORAGE_KEY, name);
   } else {
@@ -151,6 +155,7 @@ loginForm.addEventListener("submit", async (event) => {
   loginSpinner.classList.remove("d-none");
   loginLabel.textContent = "Signing in...";
   try {
+    // Login only checks registered accounts; account creation happens on register.html.
     const account = await authenticate(result.email, result.password);
     if (account === undefined) {
       showLoginError("No account found for that email. Please sign up first.");
@@ -211,6 +216,7 @@ forgotForm.addEventListener("submit", (event) => {
   success.classList.add("d-none");
   if (error) return;
 
+  // A real reset link requires a backend; this demo only validates the requested email.
   success.textContent = "Password reset isn't available in this local demo. Please sign in with your account password.";
   success.classList.remove("alert-success");
   success.classList.add("alert-info");

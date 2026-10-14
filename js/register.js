@@ -10,6 +10,7 @@ const registerButton = document.getElementById("registerBtn");
 const registerSpinner = registerButton.querySelector(".spinner-border");
 const registerLabel = registerButton.querySelector(".btn-label");
 
+// These requirements must match the checks used on the login page.
 function isUniversityEmail(email) {
   return /^[^\s@]+@[^\s@]+\.edu$/i.test(email);
 }
@@ -46,6 +47,7 @@ function readAccounts() {
   const stored = localStorage.getItem(ACCOUNT_STORAGE_KEY);
   if (stored === null) return {};
 
+  // Accounts are stored in one email-keyed object shared with login.js.
   const accounts = JSON.parse(stored);
   if (!accounts || typeof accounts !== "object" || Array.isArray(accounts)) {
     throw new Error("Stored account data is invalid.");
@@ -121,6 +123,7 @@ registerForm.addEventListener("submit", async (event) => {
 
   try {
     const accounts = readAccounts();
+    // Do not replace an existing account's password when the same email signs up again.
     if (accounts[result.email]) {
       registerAlert.textContent = "An account with this email already exists. Sign in instead.";
       registerAlert.classList.remove("d-none");
@@ -134,6 +137,7 @@ registerForm.addEventListener("submit", async (event) => {
       passwordHash: await hashPassword(result.password, salt)
     };
     localStorage.setItem(ACCOUNT_STORAGE_KEY, JSON.stringify(accounts));
+    // Return to login so the user authenticates with the account just created.
     window.location.href = "index.html?registered=1";
   } catch (error) {
     console.error("Unable to register account.", error);
