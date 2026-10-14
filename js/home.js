@@ -50,6 +50,7 @@ const saved = new Set();
 const grid = document.getElementById("profileGrid");
 const pagination = document.getElementById("profilePagination");
 const toast = bootstrap.Toast.getOrCreateInstance(document.getElementById("nestToast"), { delay: 3000 });
+const SAVED_STORAGE_KEY = "nestSavedRoommates";
 
 // ----- Helpers -----
 
@@ -60,6 +61,28 @@ function initials(name) {
 function showToast(message) {
   document.getElementById("nestToastBody").textContent = message;
   toast.show();
+}
+
+function loadSaved() {
+  try {
+    const stored = localStorage.getItem(SAVED_STORAGE_KEY);
+    if (stored === null) return;
+
+    const ids = JSON.parse(stored);
+    if (!Array.isArray(ids)) throw new Error("Saved roommates data is not a list.");
+
+    const profileIds = new Set(PROFILES.map((profile) => profile.id));
+    ids.forEach((id) => {
+      if (Number.isInteger(id) && profileIds.has(id)) saved.add(id);
+    });
+  } catch (error) {
+    console.error("Unable to load saved roommates.", error);
+    showToast("Saved roommates could not be loaded from this browser.");
+  }
+}
+
+function persistSaved() {
+  localStorage.setItem(SAVED_STORAGE_KEY, JSON.stringify([...saved]));
 }
 
 function filteredProfiles() {
@@ -172,13 +195,26 @@ function renderSaved() {
 
 function toggleSave(id) {
   const person = PROFILES.find((p) => p.id === id);
+  const wasSaved = saved.has(id);
   if (saved.has(id)) {
     saved.delete(id);
-    showToast(`Removed ${person.name.split(" ")[0]} from saved.`);
   } else {
     saved.add(id);
-    showToast(`Saved ${person.name.split(" ")[0]}. Find them under Saved.`);
   }
+  try {
+    persistSaved();
+  } catch (error) {
+    if (wasSaved) saved.add(id);
+    else saved.delete(id);
+    console.error("Unable to persist saved roommates.", error);
+    showToast("Your saved roommates could not be stored in this browser.");
+    renderSaved();
+    renderProfiles();
+    return;
+  }
+  showToast(wasSaved
+    ? `Removed ${person.name.split(" ")[0]} from saved.`
+    : `Saved ${person.name.split(" ")[0]}. Find them under Saved.`);
   renderSaved();
   renderProfiles();
 }
@@ -230,6 +266,7 @@ document.getElementById("sayHelloBtn").addEventListener("click", () => {
 
 // ----- Start -----
 
+loadSaved();
 renderProfiles();
 renderSaved();
 
@@ -238,13 +275,25 @@ renderSaved();
 
 function setGreeting() {
   let name = null;
-  try { name = sessionStorage.getItem("nestUser"); } catch (e) { /* storage unavailable */ }
+  try {
+    name = localStorage.getItem("nestUser") || sessionStorage.getItem("nestUser");
+  } catch (error) {
+    console.error("Unable to read the signed-in user.", error);
+    showToast("Your sign-in details could not be loaded from this browser.");
+  }
   document.getElementById("userGreeting").textContent = name ? `Hi, ${name}` : "Hi there";
 }
 
 document.getElementById("logoutLink").addEventListener("click", (event) => {
   event.preventDefault();
-  try { sessionStorage.removeItem("nestUser"); } catch (e) { /* storage unavailable */ }
+  try {
+    localStorage.removeItem("nestUser");
+    sessionStorage.removeItem("nestUser");
+  } catch (error) {
+    console.error("Unable to clear the signed-in user.", error);
+    showToast("You could not be signed out. Please try again.");
+    return;
+  }
   window.location.href = "index.html";
 });
 
