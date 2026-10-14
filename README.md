@@ -36,6 +36,7 @@ All profiles are fictional sample data.
 | 19 | Carousel | Roommate stories |
 | 20 | Accordion | FAQ |
 | 21 | Grid system and utilities | Responsive layout on both pages |
+| 22 | Figure | Room photo and caption in the profile modal |
 
 ## Customization
 
@@ -56,12 +57,13 @@ An internet connection is needed because Bootstrap and the fonts load from a CDN
 ## Folder structure
 
 ```
-nest-roommate-matchmaker/
+6150-group_Assignment/
   index.html      Login page
   home.html       Landing page
   css/style.css   Custom styles for both pages
-  js/login.js     Login validation
+  js/login.js     Login validation and accounts
   js/home.js      Landing page interactions
+  images/         Room photos shown in the profile modal
   README.md
 ```
 
