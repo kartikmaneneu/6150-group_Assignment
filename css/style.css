@@ -266,3 +266,24 @@ button:focus-visible,
 .match-progress .progress-bar { background: var(--pop-mint, #3BCEAC); border-radius: 0; }
 .nest-pills .nav-link { border: 2px solid var(--pop-ink, #111); }
 .nest-pills .nav-link.active { background: var(--pop-purple, #7B5CFF); }
+
+/* ===== Hero ===== */
+.hero-title {
+  font-weight: 800;
+  font-size: clamp(2.4rem, 5.2vw, 4rem);
+  line-height: 1.02;
+  max-width: 14ch;
+}
+
+.hero-lede {
+  font-size: 1.15rem;
+  color: var(--nest-muted);
+  max-width: 46ch;
+  margin-top: 1.25rem;
+}
+
+/* ===== Section headings (skip if .section-title already exists) ===== */
+.section-title {
+  font-weight: 700;
+  font-size: clamp(1.75rem, 3vw, 2.4rem);
+}
