@@ -163,6 +163,9 @@ button:focus-visible,
   border-color: var(--nest-ink);
   color: #fff;
 }
+
+.link-nest { color: var(--nest-violet); font-weight: 600; }
+
 /* ===== Filter pills ===== */
 .nest-pills {
   gap: 0.35rem;
@@ -354,6 +357,29 @@ button:focus-visible,
   font-weight: 800;
   font-size: 2.5rem;
   line-height: 1;
+}
+
+.how-section {
+  background: var(--nest-ink);
+  color: #DCE2F3;
+}
+
+.how-section .section-title,
+.how-section h3 { color: #fff; }
+
+.step-num {
+  display: inline-flex;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--nest-lamp);
+  color: var(--nest-ink);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
 }
 
 /* ===== Landing page: mobile layout and accessibility (Neelaveni) ===== */
@@ -617,6 +643,14 @@ h1, h2, h3, .h3, .h5 { color: var(--pop-ink); font-weight: 800; }
   box-shadow: inset 0 0 0 3px #fff;
 }
 
+.login-page .rule-list .list-group-item.met { color: #1E7B4F; }
+
+.login-page .rule-list .list-group-item.met::before {
+  border-color: var(--pop-mint);
+  background: var(--pop-mint);
+  box-shadow: inset 0 0 0 3px #fff;
+}
+
 .login-page .login-card .form-check-input {
   border-color: #cbd1df;
   box-shadow: none;
@@ -693,4 +727,33 @@ h1, h2, h3, .h3, .h5 { color: var(--pop-ink); font-weight: 800; }
     align-items: flex-start !important;
     flex-direction: column;
   }
+}
+
+.stories,
+.faq-section .accordion {
+  border: 3px solid var(--pop-ink);
+  box-shadow: 8px 8px 0 var(--pop-ink);
+  border-radius: 18px;
+}
+
+.faq-section .accordion-button:not(.collapsed) { background: var(--pop-yellow); }
+
+.how-section { background: var(--pop-pink); border-block: 4px solid var(--pop-ink); color: var(--pop-ink); }
+.how-section .section-title, .how-section h3 { color: var(--pop-ink); }
+.step-num { border: 3px solid var(--pop-ink); background: var(--pop-yellow); box-shadow: 3px 3px 0 var(--pop-ink); }
+
+.nest-toast { background: var(--pop-yellow); color: var(--pop-ink); border: 3px solid var(--pop-ink); box-shadow: 5px 5px 0 var(--pop-ink); }
+.nest-toast .btn-close { filter: none; }
+
+.form-control { border: 2px solid var(--pop-ink); background: #fff; }
+
+/* Stories on small phones */
+@media (max-width: 575.98px) {
+  .stories { padding: 2rem 1.25rem 3rem; }
+  .stories .carousel-control-prev,
+  .stories .carousel-control-next { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { scroll-behavior: auto !important; }
 }
