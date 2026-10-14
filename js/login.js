@@ -38,6 +38,15 @@ function setFieldError(input, feedback, message) {
 }
 
 function showLoginError(message) {
+  loginAlert.classList.remove("alert-success");
+  loginAlert.classList.add("alert-danger");
+  loginAlert.textContent = message;
+  loginAlert.classList.remove("d-none");
+}
+
+function showLoginSuccess(message) {
+  loginAlert.classList.remove("alert-danger");
+  loginAlert.classList.add("alert-success");
   loginAlert.textContent = message;
   loginAlert.classList.remove("d-none");
 }
@@ -45,6 +54,8 @@ function showLoginError(message) {
 function clearLoginError() {
   loginAlert.textContent = "";
   loginAlert.classList.add("d-none");
+  loginAlert.classList.remove("alert-success");
+  loginAlert.classList.add("alert-danger");
 }
 
 function validateLoginForm() {
@@ -105,33 +116,18 @@ async function hashPassword(password, salt) {
   return bytesToHex(bits);
 }
 
-function makeDisplayName(email) {
-  const localPart = email.split("@")[0].replace(/[._+-]+/g, " ").trim();
-  return localPart.replace(/\b\w/g, (letter) => letter.toUpperCase()) || "there";
-}
-
 async function authenticate(email, password) {
   const accounts = readAccounts();
-  let account = accounts[email];
-
-  if (!account) {
-    const salt = window.crypto.getRandomValues(new Uint8Array(16));
-    account = {
-      name: makeDisplayName(email),
-      salt: bytesToHex(salt),
-      passwordHash: await hashPassword(password, salt)
-    };
-    accounts[email] = account;
-    localStorage.setItem(ACCOUNT_STORAGE_KEY, JSON.stringify(accounts));
-  } else {
-    if (typeof account.salt !== "string" || !/^[\da-f]{32}$/i.test(account.salt) ||
-        typeof account.passwordHash !== "string" || !/^[\da-f]{64}$/i.test(account.passwordHash)) {
-      throw new Error("Stored account credentials are invalid.");
-    }
-    const salt = new Uint8Array(account.salt.match(/.{2}/g).map((byte) => Number.parseInt(byte, 16)));
-    const passwordHash = await hashPassword(password, salt);
-    if (passwordHash !== account.passwordHash) return null;
+  const account = accounts[email];
+  if (!account) return undefined;
+  if (typeof account.salt !== "string" || !/^[\da-f]{32}$/i.test(account.salt) ||
+      typeof account.passwordHash !== "string" || !/^[\da-f]{64}$/i.test(account.passwordHash)) {
+    throw new Error("Stored account credentials are invalid.");
   }
+
+  const salt = new Uint8Array(account.salt.match(/.{2}/g).map((byte) => Number.parseInt(byte, 16)));
+  const passwordHash = await hashPassword(password, salt);
+  if (passwordHash !== account.passwordHash) return null;
 
   return account;
 }
@@ -156,6 +152,10 @@ loginForm.addEventListener("submit", async (event) => {
   loginLabel.textContent = "Signing in...";
   try {
     const account = await authenticate(result.email, result.password);
+    if (account === undefined) {
+      showLoginError("No account found for that email. Please sign up first.");
+      return;
+    }
     if (!account) {
       showLoginError("That password doesn't match this account.");
       return;
@@ -220,5 +220,9 @@ forgotForm.addEventListener("submit", (event) => {
 document.getElementById("forgotEmail").addEventListener("input", () => {
   setFieldError(document.getElementById("forgotEmail"), document.getElementById("forgotFeedback"), "");
 });
+
+if (new URLSearchParams(window.location.search).has("registered")) {
+  showLoginSuccess("Registration successful. Sign in with your new account.");
+}
 
 updatePasswordRules();
