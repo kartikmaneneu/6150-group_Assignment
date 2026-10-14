@@ -163,3 +163,106 @@ button:focus-visible,
   border-color: var(--nest-ink);
   color: #fff;
 }
+/* ===== Filter pills ===== */
+.nest-pills {
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.nest-pills .nav-link {
+  color: var(--nest-ink);
+  background: #fff;
+  border: 1px solid #DFE3F0;
+  border-radius: 999px;
+  font-weight: 500;
+}
+
+.nest-pills .nav-link.active {
+  background: var(--nest-ink);
+  border-color: var(--nest-ink);
+  color: #fff;
+}
+
+/* ===== Profile cards ===== */
+.profile-card {
+  border: 1px solid #DFE3F0;
+  border-radius: 1.25rem;
+}
+
+.avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-family: var(--font-display);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.avatar-sm { width: 38px; height: 38px; font-size: 0.85rem; }
+
+.habit-badge {
+  background: #EEF0FA;
+  color: var(--nest-ink);
+  font-weight: 500;
+  font-size: 0.8rem;
+  padding: 0.45em 0.7em;
+  border-radius: 999px;
+  cursor: help;
+}
+
+.match-progress {
+  height: 10px;
+  background: #E6E9F4;
+  border-radius: 999px;
+}
+
+.match-progress .progress-bar {
+  background: var(--nest-lamp);
+  color: var(--nest-ink);
+  font-size: 0.7rem;
+  font-weight: 700;
+  border-radius: 999px;
+}
+
+#modalMatch { height: 18px; }
+
+/* Room photo figure in the profile modal (photos have mixed sizes, so crop to one height) */
+.room-photo {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+/* ===== Pagination ===== */
+.nest-pagination .page-link {
+  color: var(--nest-ink);
+  border-color: #DFE3F0;
+}
+
+.nest-pagination .page-item.active .page-link {
+  background: var(--nest-ink);
+  border-color: var(--nest-ink);
+  color: #fff;
+}
+
+/* ===== Pop style for matches, profile modal and saved list ===== */
+/* Fallback colors keep these working before the shared pop tokens are added */
+.profile-card {
+  border: 3px solid var(--pop-ink, #111);
+  box-shadow: 8px 8px 0 var(--pop-ink, #111);
+  border-radius: 18px;
+}
+#profileGrid > div:nth-child(3n+1) .profile-card { background: #FFF1A8; }
+#profileGrid > div:nth-child(3n+2) .profile-card { background: #FFD1E6; }
+#profileGrid > div:nth-child(3n+3) .profile-card { background: #C9F5EA; }
+.profile-card:hover { transform: translate(-3px, -3px); box-shadow: 11px 11px 0 var(--pop-ink, #111); transition: .15s; }
+.avatar { border: 3px solid var(--pop-ink, #111); }
+.habit-badge { background: #fff; border: 2px solid var(--pop-ink, #111); }
+.match-progress { border: 2px solid var(--pop-ink, #111); height: 16px; background: #fff; }
+.match-progress .progress-bar { background: var(--pop-mint, #3BCEAC); border-radius: 0; }
+.nest-pills .nav-link { border: 2px solid var(--pop-ink, #111); }
+.nest-pills .nav-link.active { background: var(--pop-purple, #7B5CFF); }
