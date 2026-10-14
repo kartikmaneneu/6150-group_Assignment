@@ -45,8 +45,8 @@ The pages are built from scratch on Bootstrap 5.3, not copied from a template. C
 
 1. Clone the repository:
    ```
-   git clone <your-repo-url>
-   cd nest-roommate-matchmaker
+   git clone https://github.com/kartikmaneneu/6150-group_Assignment.git
+   cd 6150-group_Assignment
    ```
 2. Open `index.html` in a browser, or use the VS Code **Live Server** extension (right-click `index.html` > Open with Live Server).
 3. Sign in with any email ending in `.edu` and a password with at least 8 characters, one uppercase letter and one number (for example `nidhi@northeastern.edu` / `Roommate1`).
