@@ -282,8 +282,20 @@ button:focus-visible,
   margin-top: 1.25rem;
 }
 
-/* ===== Section headings (skip if .section-title already exists) ===== */
 .section-title {
   font-weight: 700;
   font-size: clamp(1.75rem, 3vw, 2.4rem);
+}
+
+.meter-card {
+  background: #fff;
+  border: 1px solid #DFE3F0;
+  border-radius: 1.5rem;
+  padding: 1.75rem;
+}
+
+.meter-q {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
 }
