@@ -232,3 +232,20 @@ document.getElementById("sayHelloBtn").addEventListener("click", () => {
 
 renderProfiles();
 renderSaved();
+
+
+// === Navbar: greeting and sign out (Neelaveni) ===
+
+function setGreeting() {
+  let name = null;
+  try { name = sessionStorage.getItem("nestUser"); } catch (e) { /* storage unavailable */ }
+  document.getElementById("userGreeting").textContent = name ? `Hi, ${name}` : "Hi there";
+}
+
+document.getElementById("logoutLink").addEventListener("click", (event) => {
+  event.preventDefault();
+  try { sessionStorage.removeItem("nestUser"); } catch (e) { /* storage unavailable */ }
+  window.location.href = "index.html";
+});
+
+setGreeting();
