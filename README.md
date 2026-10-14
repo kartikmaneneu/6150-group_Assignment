@@ -6,8 +6,10 @@ Nest helps university students find a roommate they can actually live with. Inst
 
 The project has two pages:
 
-- **Login page (`index.html`)**: sign in with a university `.edu` email. Every field is validated on the client side with specific error messages, a live password checklist, a show/hide password toggle, an error summary alert, a loading spinner, and a "Forgot password" modal with its own validation.
-- **Landing page (`home.html`)**: a personalized home page with a live "match meter" (answer three questions and the house windows light up as your match score rises), filterable roommate profiles with habit badges and match bars, a profile modal, saved roommates in an offcanvas panel, a "How it works" section, a stories carousel and an FAQ accordion.
+- **Login page (`index.html`)**: create or sign in to a local demo account using a university `.edu` email. Fields are validated client-side, passwords are PBKDF2-hashed in browser storage, and the "Keep me signed in" checkbox controls whether sign-in lasts for the browser session or across sessions. Password reset is unavailable without a backend service.
+- **Landing page (`home.html`)**: a personalized home page with a live "match meter" (answer three questions and the house windows light up as your match score rises), filterable roommate profiles with habit badges and match bars, a profile modal, saved roommates persisted in browser storage, a "How it works" section, a stories carousel and an FAQ accordion.
+
+This is a front-end prototype, not a production authentication system. Account data and saved roommates are stored in the current browser and are not shared across devices.
 
 All profiles are fictional sample data.
 
