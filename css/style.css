@@ -377,3 +377,28 @@ html { scroll-padding-top: 5rem; }
 @media (prefers-reduced-motion: reduce) {
   .window { transition: none; }
 }
+
+:root {
+  --pop-ink: #111;
+  --pop-sky: #D6F1FF;
+  --pop-yellow: #FFD23F;
+  --pop-pink: #FF5DA2;
+  --pop-mint: #3BCEAC;
+  --pop-purple: #7B5CFF;
+}
+body, .home-page { background: var(--pop-sky); }
+h1, h2, h3, .h3, .h5 { color: var(--pop-ink); font-weight: 800; }
+
+.btn {
+  border: 3px solid var(--pop-ink) !important;
+  box-shadow: 4px 4px 0 var(--pop-ink);
+  border-radius: 12px;
+  transition: transform .12s, box-shadow .12s;
+}
+.btn:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--pop-ink); }
+.btn:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--pop-ink); }
+.btn-nest { --bs-btn-bg: var(--pop-pink); --bs-btn-hover-bg: var(--pop-pink); --bs-btn-active-bg: var(--pop-pink); --bs-btn-color: var(--pop-ink); --bs-btn-hover-color: var(--pop-ink); --bs-btn-active-color: var(--pop-ink); --bs-btn-disabled-bg: var(--pop-pink); --bs-btn-disabled-color: var(--pop-ink); }
+.btn-outline-nest { --bs-btn-bg: #fff; }
+.btn-check:checked + .btn-outline-nest { background: var(--pop-yellow); color: var(--pop-ink); }
+.btn-group > .btn { box-shadow: none; }
+.btn-group { box-shadow: 4px 4px 0 var(--pop-ink); border-radius: 12px; }
