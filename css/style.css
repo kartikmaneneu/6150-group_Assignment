@@ -230,7 +230,6 @@ button:focus-visible,
 
 #modalMatch { height: 18px; }
 
-/* Room photo figure in the profile modal (photos have mixed sizes, so crop to one height) */
 .room-photo {
   width: 100%;
   height: 220px;
@@ -249,8 +248,6 @@ button:focus-visible,
   color: #fff;
 }
 
-/* ===== Pop style for matches, profile modal and saved list ===== */
-/* Fallback colors keep these working before the shared pop tokens are added */
 .profile-card {
   border: 3px solid var(--pop-ink, #111);
   box-shadow: 8px 8px 0 var(--pop-ink, #111);
@@ -402,3 +399,24 @@ h1, h2, h3, .h3, .h5 { color: var(--pop-ink); font-weight: 800; }
 .btn-check:checked + .btn-outline-nest { background: var(--pop-yellow); color: var(--pop-ink); }
 .btn-group > .btn { box-shadow: none; }
 .btn-group { box-shadow: 4px 4px 0 var(--pop-ink); border-radius: 12px; }
+
+/* ===== POP STYLE: navbar, hero, match meter, house (Neelaveni) ===== */
+.nest-nav { background: var(--pop-yellow); border-bottom: 3px solid var(--pop-ink); }
+.brand-roof { background: var(--pop-pink); }
+
+.hero-title { font-size: clamp(2.6rem, 5.6vw, 4.4rem); }
+
+.meter-card {
+  background: #fff;
+  border: 3px solid var(--pop-ink);
+  box-shadow: 8px 8px 0 var(--pop-ink);
+  border-radius: 18px;
+  transform: rotate(1.5deg);
+}
+
+.house-roof { background: var(--pop-pink); }
+.house-body, .house::after { background: var(--pop-purple); }
+.window { background: #5a3fd6; border: 2px solid var(--pop-ink); }
+.window.lit { background: var(--pop-yellow); }
+.house-door { background: var(--pop-mint); border: 3px solid var(--pop-ink); border-bottom: 0; }
+
