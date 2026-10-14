@@ -358,3 +358,22 @@ button:focus-visible,
   font-size: 2.5rem;
   line-height: 1;
 }
+
+/* ===== Landing page: mobile layout and accessibility (Neelaveni) ===== */
+
+html { scroll-padding-top: 5rem; }
+
+@media (max-width: 991.98px) {
+  .hero-title { max-width: none; }
+  .hero-lede { max-width: none; }
+}
+
+@media (max-width: 575.98px) {
+  .meter-card { padding: 1.25rem; }
+  .hero .btn-lg { width: 100%; }
+  .house { width: 140px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .window { transition: none; }
+}
