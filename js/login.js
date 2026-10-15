@@ -10,27 +10,8 @@ const loginButton = document.getElementById("loginBtn");
 const loginSpinner = loginButton.querySelector(".spinner-border");
 const loginLabel = loginButton.querySelector(".btn-label");
 
-// Keep the same password rules on login and registration so both flows agree.
 function isUniversityEmail(email) {
   return /^[^\s@]+@[^\s@]+\.edu$/i.test(email);
-}
-
-function passwordRules(password) {
-  return {
-    length: password.length >= 8,
-    upper: /[A-Z]/.test(password),
-    number: /\d/.test(password)
-  };
-}
-
-function updatePasswordRules() {
-  const rules = passwordRules(passwordInput.value);
-  document.querySelectorAll("#passwordRules [data-rule]").forEach((item) => {
-    const valid = rules[item.dataset.rule];
-    item.classList.toggle("text-success", valid);
-    item.classList.toggle("text-body-secondary", !valid);
-    item.setAttribute("aria-checked", String(valid));
-  });
 }
 
 function setFieldError(input, feedback, message) {
@@ -69,12 +50,7 @@ function validateLoginForm() {
     : !isUniversityEmail(email)
       ? "Enter a valid university email ending in .edu."
       : "";
-  const rules = passwordRules(password);
-  const passwordError = !password
-    ? "Enter a password."
-    : Object.values(rules).every(Boolean)
-      ? ""
-      : "Use at least 8 characters, one uppercase letter, and one number.";
+  const passwordError = password ? "" : "Enter a password.";
 
   setFieldError(emailInput, document.getElementById("emailFeedback"), emailError);
   setFieldError(passwordInput, document.getElementById("passwordFeedback"), passwordError);
@@ -186,7 +162,6 @@ emailInput.addEventListener("input", () => {
 
 passwordInput.addEventListener("input", () => {
   setFieldError(passwordInput, document.getElementById("passwordFeedback"), "");
-  updatePasswordRules();
   clearLoginError();
 });
 
@@ -230,5 +205,3 @@ document.getElementById("forgotEmail").addEventListener("input", () => {
 if (new URLSearchParams(window.location.search).has("registered")) {
   showLoginSuccess("Registration successful. Sign in with your new account.");
 }
-
-updatePasswordRules();
