@@ -67,19 +67,12 @@
             <!-- Password with show/hide (input group) -->
             <div class="input-group has-validation mb-2">
               <div class="form-floating">
-                <input type="password" class="form-control" id="password" placeholder="Password" autocomplete="current-password" aria-describedby="passwordFeedback passwordRules">
+                <input type="password" class="form-control" id="password" placeholder="Password" autocomplete="current-password" aria-describedby="passwordFeedback">
                 <label for="password">Password</label>
               </div>
               <button class="btn btn-outline-secondary toggle-pass" type="button" id="togglePassword" aria-label="Show password" aria-pressed="false">Show</button>
               <div id="passwordFeedback" class="invalid-feedback"></div>
             </div>
-
-            <!-- Live password checklist (list group) -->
-            <ul id="passwordRules" class="list-group list-group-flush rule-list mb-3" aria-label="Password requirements">
-              <li class="list-group-item" data-rule="length">At least 8 characters</li>
-              <li class="list-group-item" data-rule="upper">One uppercase letter</li>
-              <li class="list-group-item" data-rule="number">One number</li>
-            </ul>
 
             <div class="d-flex justify-content-between align-items-center mb-4">
               <div class="form-check">

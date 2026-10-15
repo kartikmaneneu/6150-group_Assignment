@@ -10,7 +10,6 @@ const registerButton = document.getElementById("registerBtn");
 const registerSpinner = registerButton.querySelector(".spinner-border");
 const registerLabel = registerButton.querySelector(".btn-label");
 
-// These requirements must match the checks used on the login page.
 function isUniversityEmail(email) {
   return /^[^\s@]+@[^\s@]+\.edu$/i.test(email);
 }
