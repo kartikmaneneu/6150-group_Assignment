@@ -4,11 +4,13 @@
 
 Nest helps university students find a roommate they can actually live with. Instead of matching on photos or majors, Nest matches on the habits that decide whether sharing a home works: sleep schedule, tidiness, noise and how often guests come over.
 
-The project has two pages:
+The project consists of three pages:
 
-- **Login page (`index.html`)**: sign in to a previously registered local account using a university `.edu` email. Fields are validated client-side, passwords are PBKDF2-hashed in browser storage, and the "Keep me signed in" checkbox controls whether sign-in lasts for the browser session or across sessions.
-- **Registration page (`register.html`)**: validate an email and password, create a local account, and return to the login page. Password reset is unavailable without a backend service.
-- **Landing page (`home.html`)**: a personalized home page with a live "match meter" (answer three questions and the house windows light up as your match score rises), filterable roommate profiles with habit badges and match bars, a profile modal, saved roommates persisted in browser storage, a "How it works" section, a stories carousel and an FAQ accordion.
+- **Login page (`index.html`)**: Allows users to sign in to a previously registered local account using an email ending in `.edu`. Login fields are validated on the client side, and passwords are verified using PBKDF2 password hashing. The "Keep me signed in" checkbox determines whether the login session is stored in `localStorage` or `sessionStorage`.
+
+- **Registration page (`register.html`)**: Allows users to create a local account after validating their university email and password. Passwords are hashed using PBKDF2 before being stored in browser storage. After successful registration, users are redirected to the login page.
+
+- **Landing page (`home.html`)**: Provides a personalized home page with an interactive match meter, a three-question compatibility quiz, filterable roommate profiles, habit badges, match bars, profile details modal, saved roommates, a stories carousel, and an FAQ accordion. The match meter starts at 10%. Each answer that matches Maya's preferences adds 30 percentage points to the score. After all three questions are answered, the score can reach 100%. The house windows light up as the compatibility score increases.
 
 This is a front-end prototype, not a production authentication system. Account data and saved roommates are stored in the current browser and are not shared across devices.
 
@@ -21,7 +23,7 @@ All profiles are fictional sample data.
 | 1 | Navbar (with collapse on mobile) | Landing page header |
 | 2 | Dropdown | User menu in the navbar |
 | 3 | Buttons and button groups | Everywhere; match meter answers use button groups with `btn-check` |
-| 4 | Forms (floating labels, checkbox) | Login form |
+| 4 | Forms (floating labels, checkboxes, and form controls) | Login and registration pages
 | 5 | Form validation (`is-invalid`, `invalid-feedback`) | Login form and forgot-password form |
 | 6 | Input group | Password field with Show/Hide button |
 | 7 | Alerts | Login error summary, reset-link confirmation |
@@ -41,6 +43,8 @@ All profiles are fictional sample data.
 | 21 | Grid system and utilities | Responsive layout on both pages |
 | 22 | Figure | Room photo and caption in the profile modal |
 
+Bootstrap 5.3.2 is loaded through a CDN. The project combines Bootstrap components with custom CSS styling.
+
 ## Customization
 
 The pages are built from scratch on Bootstrap 5.3, not copied from a template. Customization includes a playful "pop" visual style (thick black outlines, hard offset shadows, bright yellow, pink, mint and purple), custom fonts (Bricolage Grotesque and Figtree), buttons that lift on hover and press down on click, custom button variants (`btn-nest`, `btn-outline-nest`), a CSS-drawn house that reacts to the match meter, restyled pills, pagination, carousel, accordion and toasts, and a live password checklist built on the list group component.
@@ -49,11 +53,12 @@ The pages are built from scratch on Bootstrap 5.3, not copied from a template. C
 
 1. Clone the repository:
    ```
+
    git clone https://github.com/kartikmaneneu/6150-group_Assignment.git
    cd 6150-group_Assignment
    ```
 2. Open `index.html` in a browser, or use the VS Code **Live Server** extension (right-click `index.html` > Open with Live Server).
-3. Sign in with any email ending in `.edu` and a password with at least 8 characters, one uppercase letter and one number (for example `nidhi@northeastern.edu` / `Roommate1`).
+3. Register with any email ending in `.edu` and a password with at least 8 characters, one uppercase letter and one number (for example `nidhi@northeastern.edu’).
 
 An internet connection is needed because Bootstrap and the fonts load from a CDN.
 
@@ -61,13 +66,32 @@ An internet connection is needed because Bootstrap and the fonts load from a CDN
 
 ```
 6150-group_Assignment/
-  index.html      Login page
-  home.html       Landing page
-  css/style.css   Custom styles for both pages
-  js/login.js     Login validation and accounts
-  js/home.js      Landing page interactions
-  images/         Room photos shown in the profile modal
-  README.md
+│
+├── index.html
+├── register.html
+├── home.html
+│
+├── css/
+│   └── style.css
+│
+├── js/
+│   ├── login.js
+│   ├── register.js
+│   └── home.js
+│
+├── images/
+│   ├── room-1.jpg
+│   ├── room-2.jpg
+│   ├── room-3.jpg
+│   ├── room-4.jpg
+│   ├── room-5.jpg
+│   ├── room-6.jpg
+│   ├── room-7.jpg
+│   ├── room-8.jpg
+│   └── room-9.jpg
+│
+└── README.md
+
 ```
 
 ## Team and contributions
@@ -79,4 +103,24 @@ An internet connection is needed because Bootstrap and the fonts load from a CDN
 | Yikai Zhu | `feature-Yikai`             | Roommate profile cards, filters, pagination, profile modal, saved roommates panel |
 | Nidhi     | `feature/Nidhi`             | Stories carousel, FAQ, footer, README, integration and testing |
 
+## Technical Implementation
+
+### JavaScript
+- `login.js` handles login form validation, password verification, and user sessions.
+- `register.js` handles registration validation and account creation.
+- `home.js` handles the match meter, roommate profiles, filters, pagination, profile modal, and saved roommates.
+
+### Browser Storage
+- `localStorage` stores registered accounts and saved roommate information.
+- `localStorage` stores the signed-in user when "Keep me signed in" is selected.
+- `sessionStorage` stores the signed-in user when "Keep me signed in" is not selected.
+
+### Password Security
+Passwords are hashed in the browser using PBKDF2 with SHA-256 before account information is stored. This is a demonstration implementation and is not a replacement for secure server-side authentication.
+
+### Responsive Design
+Bootstrap's grid system and responsive utility classes are used to adapt the layout to different screen sizes.
+
 All work was merged into `main` through pull requests from each member's branch.
+
+
